@@ -4,26 +4,22 @@ A real-time embedded healthcare monitoring system powered by an STM32 micro-cont
 
 **System Architecture**
 
-[ AD8232 ECG Sensor ] ───> [ STM32 Hardware Timer Interrupt (200 Hz) ]
-                                      │
- ┌────────────────────────────────────┴────────────────────────────────────┐
- │  ON-CHIP EMBEDDED PIPELINE (firmware.ino)                               │
- │                                                                         │
- │  • Level 0: IIR Bandpass Filter (Baseline Wander & Noise Cancellation)  │
- │  • Level 1: Pan-Tompkins Algorithm (Derivative, MWI, R-Peak Detection)  │
- │  • Level 1: HRV Calculation (RMSSD over 5-Beat RR Window)               │
- │  • Level 2: Decision Tree Rhythm Classifier (NORMAL / WARNING / RISK)   │
- └────────────────────────────────────┬────────────────────────────────────┘
-                                      │  115200 Baud UART
-                                      ▼
- ┌─────────────────────────────────────────────────────────────────────────┐
- │  PYTHON DIGITAL TWIN GUI (digital_twin.py)                              │
- │                                                                         │
- │  • Real-Time Data Parsing (Serial Receiver)                             │
- │  • Phase-Locked P-QRS-T Waveform Synthesizer (Gaussian Model)           │
- │  • Secondary Parameter Estimation (SpO2 & Systolic Blood Pressure)      │
- │  • 30 FPS Throttled Matplotlib Clinical ECG Strip Display               │
- └─────────────────────────────────────────────────────────────────────────┘
+[ AD8232 ECG Sensor ] ───> [ STM32 Hardware Timer Interrupt (200 Hz) ] : 
+ 
+ ON-CHIP EMBEDDED PIPELINE (firmware.ino)                               
+• Level 0: IIR Bandpass Filter (Baseline Wander & Noise Cancellation)  
+• Level 1: Pan-Tompkins Algorithm (Derivative, MWI, R-Peak Detection)  
+• Level 1: HRV Calculation (RMSSD over 5-Beat RR Window)               
+• Level 2: Decision Tree Rhythm Classifier (NORMAL / WARNING / RISK)   
+
+ 115200 Baud UART
+
+PYTHON DIGITAL TWIN GUI (digital_twin.py)                              
+• Real-Time Data Parsing (Serial Receiver)                             
+• Phase-Locked P-QRS-T Waveform Synthesizer (Gaussian Model)           
+• Secondary Parameter Estimation (SpO2 & Systolic Blood Pressure)      
+• 30 FPS Throttled Matplotlib Clinical ECG Strip Display               
+
 
 
 **Python Digital Twin Client (digital_twin.py)**
