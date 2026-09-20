@@ -27,6 +27,12 @@ PYTHON DIGITAL TWIN GUI (digital_twin.py)
 `Real-Time Telemetry Receiver`: Parses 5-value CSV streams arriving over 115200 baud serial communication (COM7).   
 `Phase-Locked Waveform Synthesis`: Generates mathematical Gaussian-driven P-QRS-T electrocardiogram curves synchronized in real-time to the patient's actual heart rate.   
 `Physiological Metric Estimation`: Calculates estimated Oxygen Saturation (SpO2) and Systolic Blood Pressure (BP) dynamically from heart rate and body temperature data.   
-Clinical ECG Strip Visualization: Renders a 4-second scrolling graph window styled like medical grid paper.   
-Throttled Render Engine: Frame-throttled at 30 FPS to ensure smooth rendering and eliminate OS lag.   
-Offline Simulation Mode: Toggling SIMULATION_MODE = True allows GUI testing without physical hardware connected.
+`Clinical ECG Strip Visualization`: Renders a 4-second scrolling graph window styled like medical grid paper.   
+`Throttled Render Engine`: Frame-throttled at 30 FPS to ensure smooth rendering and eliminate OS lag.   
+`Offline Simulation Mode`: Toggling SIMULATION_MODE = True allows GUI testing without physical hardware connected.
+
+**Hardware Pinout**
+
+`AD8232 ECG Sensor : OUT -> PA0 : Analog ECG Signal Input | LO- -> PA2 : Leads-Off Negative Detection | LO+ -> PA3 : Leads-Off Positive Detection |`
+`Temperature Sensor :	OUT	-> PA1	: Analog Temperature Input |`
+`USB-to-TTL Adapter : RX -> PA9 (TX1) : Serial Data Transmission | TX -> PA10 (RX1) : Serial Data Reception`   
